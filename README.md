@@ -109,6 +109,15 @@ Create `docker-compose.yaml`:
 services:
   allora-node:
     container_name: allora-node
+    image: "alloranetwork/allora-chain:v0.6.0" # docker image without cosmovisor. use vx.x.x-upgrader for upgrade image
+    environment:
+      - NETWORK=allora-testnet-1
+      - MONIKER=RPCFULLNODE
+      - APP_HOME=/data
+      - HOME=/data
+      - STATE_SYNC_RPC1=https://allora-rpc.testnet.allora.network:443
+      - STATE_SYNC_RPC2=https://allora-rpc.testnet.allora.network:443
+      #- UPGRADE=true # set this to true for chain upgrade runs
     volumes:
       - ./data:/data
       - ./scripts/:/scripts
@@ -116,6 +125,7 @@ services:
       - "26656-26657:26656-26657"
     user: "0:0"
     entrypoint: /scripts/l1_node.sh
+
 ```
 
 ### 6. Launch and Synchronization
