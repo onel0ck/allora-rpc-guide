@@ -103,7 +103,7 @@ apt install nano
 
 ### 5. Node Configuration
 
-Create `docker-compose.yaml`:
+Edit`docker-compose.yaml`:
 
 ```yaml
 services:
